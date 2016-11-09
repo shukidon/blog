@@ -1,0 +1,59 @@
+<!-- HeaderHTML -->
+<div id="trigger-point">
+</div>
+<div id="global-menu">
+    <div id="mobile-head">
+        <div id="nav-toggle">
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <ul class="global-menu-list">
+        <li><a href="http://shukidon.hateblo.jp/archive/category/Information">Information</a></li>
+        <li><a href="http://shukidon.hateblo.jp/archive/category/Windows">Windows</a></li>
+        <li><a href="http://shukidon.hateblo.jp/archive/category/Minecraft">Minecraft</a></li>
+        <li><a href="ここにリンク先のアドレス">あき</a></li>
+        <li><a href="ここにリンク先のアドレス">あき</a></li>
+        <li>
+            <form class="search-form_globalmenu" role="search" action="http://shukidon.hateblo.jp/search" method="get">
+                <input name="q" class="search-module-input_globalmenu" value="" placeholder="ブログ内検索" required="" type="text">
+                <input value="検索" class="search-module-button_globalmenu" type="submit">
+            </form>
+        </li>
+    </ul>
+</div>
+<!-- HeaderHTML -->
+
+<!-- HeaderJS -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+$(function (){
+    // 変数に代入
+    var $nav = $('#global-menu');
+    var $content = $('#content');
+    var $offsetTop = $('#trigger-point').offset().top;
+    // 固定メニューの設定
+    function fixedNav() {
+        if($(window).scrollTop() > $offsetTop){
+            $nav.addClass('fixed');
+        } else {
+            $nav.removeClass('fixed');
+        }
+    };
+    $(window).scroll(fixedNav);
+    $('body').on('touchmove', fixedNav);
+    // Toggle メニューの設定
+    $('#nav-toggle').click(function (){
+        $nav.toggleClass('open');
+    });
+    $('#content').click(function (){
+        if($nav.hasClass('open')){
+            $nav.removeClass('open');
+        }
+    })
+});
+</script>
+<!-- HeaderJS -->
